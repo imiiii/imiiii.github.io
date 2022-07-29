@@ -4859,6 +4859,7 @@ a img {
 .header .site-title {
     font-size: 35px;
     display: block;
+	color: black;
     line-height: 1;
     color: #fff;
 }
