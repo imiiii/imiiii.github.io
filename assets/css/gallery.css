@@ -113,6 +113,8 @@ a.bsp-controls:hover {
   font-size: 11px;
   margin-bottom: 0px;
   padding: 0 12px 5px;
+  color:#ffc10;
+  background:#7b614e;
 }
 
 .bspImgWrapper {
