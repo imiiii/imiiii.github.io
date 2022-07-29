@@ -20,6 +20,7 @@ ul[data-bsp-ul-index] li {
     text-align: center;
 }
 #bsPhotoGalleryModal .bsp-text-container {
+	font-weight: bold;
   background:#7b614e;
   color: #ffc07e;
   text-align:left;
@@ -54,6 +55,7 @@ ul[data-bsp-ul-index] li {
   white-space: nowrap;
 }
 .bspText {
+	font-weight: bold;
   color: #ffc07e;
   font-size:11px;
   margin-bottom:10px;
@@ -113,6 +115,7 @@ a.bsp-controls:hover {
 }
 #bsPhotoGalleryModal .pText {
   color: #ffc07e;
+  font-weight: bold;
   font-size: 11px;
   margin-bottom: 0px;
   padding: 0 12px 5px;
