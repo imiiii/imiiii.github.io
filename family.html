@@ -1,109 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Metadata of the Webpage -->
-    <!-- Character-set Metadata -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Viewport Metadata -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Description Metadata-->
-    <meta name="description" content="Portfolio Website" />
-    <!-- Author Metadata -->
-    <meta name="author" content="Iman Barzegari" />
-    <!-- Keyword Metadata -->
-    <meta
-      name="keywords"
-      content="Iman, Barzegari, Iman Barzegari, imi, imi_iii, iman barzegari banadkooki, banadkooki,        "
-    />
-    <!-- Webpage Logo -->
-    <link rel="shortcut icon" href="./assets/img/personal.ico" />
-    <!-- Webpage Title -->
-    <title>Iman Barzegari</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Bootstrap Photo Gallery Demo</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
-    <!-- Import CSS: Main Stylesheet -->
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="stylesheet" href="./assets/css/gallery.css" />
+    <link href="jquery.bsPhotoGallery.css" rel="stylesheet">
+    <script src="jquery.bsPhotoGallery.js"></script>	
+	
+    </script>
+    <script>
+      $(document).ready(function(){
+        $('ul.first').bsPhotoGallery({
+          "classes" : "col-xl-3 col-lg-2 col-md-4 col-sm-4",
+          "hasModal" : true,
+          "shortText" : false  
+        });
+      });
+    </script>
   </head>
-
+  <style>
+      /**************STYLES ONLY FOR DEMO PAGE**************/
+      @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+      body {
+        background:#ebebeb;
+      }   
+  </style>
   <body>
-    <div >
-      <div class="header">
-        <h1>
-          <span class="site-title backfamily">Barzegari's family or Barzegary's family</span>
-          <span class="site-description backfamily">The family name does not matter. Seriously it is more about our genes.</span>
-        </h1>
-
-		</div>
-<div>
-			<!-- The grid: four columns -->
-				<div class="row">
-				<div class="column">
-				<img src="./assets/img/jpg/darmanet.png" alt="Nature" onclick="myFunction(this);">
-				</div>
-				<div class="column">
-						<img src="./assets/img/jpg/darmanet.png" alt="Snow" onclick="myFunction(this);">
-				</div>
-				<div class="column">
-					<img src="./assets/img/jpg/darmanet.png" alt="Mountains" onclick="myFunction(this);">
-				</div>
-  <div class="column">
-    <img src="./assets/img/jpg/darmanet.png" alt="Lights" onclick="myFunction(this);">
-  </div>
-</div>
-
-<!-- The expanding image container -->
-		<div class="container">
-  <!-- Close the image -->
-			<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-
-  <!-- Expanded image -->
-			<img id="expandedImg" style="width:100%">
-
-  <!-- Image text -->
-			<div id="imgtext"></div>
-		</div>
-</div>
-        <!--<div class="header-icons">
-          <a aria-label="My LinkedIn Profile" target="_blank" href="https://www.linkedin.com/in/imibarzegari/">
-            <i class="icon fa fa-linkedin" aria-hidden="true"></i>
-          </a>
-          <a aria-label="My Github Profile" target="_blank" href="https://github.com/imiiii">
-            <i class="icon fa fa-github-alt" aria-hidden="true"></i>
-          </a>
-          <a aria-label="My Résumé" target="_blank" href="https://drive.google.com/file/d/1HxUdnMQz0WdDG-KdeZFr5_CEP9MGMqav/view?usp=sharing">
-            <i class="icon fa fa fa-file-pdf-o" aria-hidden="true"></i>
-          </a>
-          <a aria-label="Send Email" href="mailto:imanbarzegari95@gmail.com" target="_blank"
-            ><i class="icon fa fa-envelope"></i
-          ></a>
+    <div class="container">
+        <div class="row" style="text-align:center; border-bottom:1px dashed #ccc;  padding:30px 0 20px 0; margin-bottom:40px;">
+            <div class="col-lg-12">
+            <h3 style="font-family:'Bree Serif', arial; font-weight:bold; font-size:30px;">
+                <a style="text-decoration:none; color:#666;" href="http://michaelsoriano.com/create-a-responsive-photo-gallery-with-bootstrap-framework/">Bootstrap Photo Gallery jQuery plugin <span style="color:red;">Demo</span></a>
+            </h3>
+            <p>Resize your browser and watch the gallery adapt to the view port size. Clicking on an image will activate the Modal. Click <strong><a style="color:red" href="http://michaelsoriano.com/create-a-responsive-photo-gallery-with-bootstrap-framework/">Here</a></strong> to go back to the tutorial</p>
+            </div>
         </div>
-        <div class="header-links">
-          <a class="link" href="#about" data-scroll>About Me</a>
-          <a class="link" href="#projects" data-scroll>Projects</a>
-        </div>
-      </div>
-      <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
-	  --!>
-    </div>
 
-    <!-- About Section -->
+        <ul class="row first">
+            <li>
+                <img alt="Rocking the night away"  src="http://demo.michaelsoriano.com/images/photodune-174908-rocking-the-night-away-xs.jpg">
+                <p>Consectetur adipiscing elit</p>
+            </li>
+            <li>
+                <img alt="Yellow sign"  src="http://demo.michaelsoriano.com/images/photodune-287182-blah-blah-blah-yellow-road-sign-xs.jpg">
+                <p>Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Colors"  src="http://demo.michaelsoriano.com/images/photodune-460760-colors-xs.jpg">
+                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+            </li>
+            <li>
+                <img alt="Retro party"  src="http://demo.michaelsoriano.com/images/photodune-461673-retro-party-xs.jpg">
+                <p>Lorem, do eiusmod tempor incid Ut enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Technology soup"  src="http://demo.michaelsoriano.com/images/photodune-514834-touchscreen-technology-xs.jpg">
+                <p>Do eiusmod tempor</p>
+            </li>
+            <li>
+                <img alt="Legal docs"  src="http://demo.michaelsoriano.com/images/photodune-916206-legal-xs.jpg" data-bsp-large-src="http://demo.michaelsoriano.com/images/photodune-916206-legal-large.jpg">
+                <p>Eiusmod tempor enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Nature shot"  src="http://demo.michaelsoriano.com/images/photodune-1062948-nature-xs.jpg">
+                <p>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Kid with camera" src="http://demo.michaelsoriano.com/images/photodune-1471528-insant-camera-kid-xs.jpg" data-bsp-large-src="http://demo.michaelsoriano.com/images/photodune-1471528-insant-camera-kid-large.jpg">
+                <p>Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Relax and Chill" src="http://demo.michaelsoriano.com/images/photodune-2255072-relaxed-man-xs.jpg">
+                <p>Eiusmod tempor enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Cool colors" src="http://demo.michaelsoriano.com/images/photodune-2360379-colors-xs.jpg">
+                <p>Consectetur adipiscing elit</p>
+            </li>
+            <li>
+                <img alt="Jump over"  src="http://demo.michaelsoriano.com/images/photodune-2360571-jump-xs.jpg">
+                <p>Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </li>
+            <li>
+                <img alt="Culture business" src="http://demo.michaelsoriano.com/images/photodune-2361384-culture-for-business-xs.jpg">
+                <p>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+            </li>
+
+      <li>
+          <img alt="Spaghetti bitch" src="http://demo.michaelsoriano.com/images/photodune-2441670-spaghetti-with-tuna-fish-and-parsley-s.jpg">
+          <p>Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      </li>
+      <li>
+          <img alt="Budget this"  src="http://demo.michaelsoriano.com/images/photodune-2943363-budget-xs.jpg">
+          <p>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      </li>
+      <li>
+          <img alt="Street art"  src="http://demo.michaelsoriano.com/images/photodune-3444921-street-art-xs.jpg">
+          <p>Consectetur adipiscing elit, re magna aliqua. Ut enim ad minim veniam</p>
+      </li>
 
 
-    <!-- Projects Section -->
-    
-    <footer class="footer">
-      <p> It is on the construction</p>
-    </footer>
+      <li>
+          <img alt="Insurance and stuff"  src="http://demo.michaelsoriano.com/images/photodune-3552322-insurance-xs.jpg">
+          <p>Ut enim ad minim veniam</p>
+      </li>
 
-    <!-- Import JS: Particles Theme -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- Import JS: Sweet Scroll -->
-    <script src="./assets/js/sweet-scroll.min.js"></script>
-    <!-- Import JS: Google Analytics -->
-    <script src="./assets/js/google-analytics.js"></script>
-    <!-- Import JS: Main Script -->
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/gallery.js"></script>
+      <li>
+          <img alt="Food Explosion"  src="http://demo.michaelsoriano.com/images/photodune-3807845-food-s.jpg">
+          <p>Eiusmod tempor enim ad minim veniam</p>
+      </li>
+      <li>
+          <img alt="Office worker sad" src="http://demo.michaelsoriano.com/images/photodune-3835655-down-office-worker-xs.jpg">
+          <p>Ut enim ad minim veniam</p>
+      </li>
+
+      <li>
+          <img alt="" src="http://demo.michaelsoriano.com/images/photodune-4619216-ui-control-knob-regulators-xs.jpg">
+          <p>Do eiusmod tempor</p>
+      </li>
+
+      <li>
+          <img alt="Health" src="http://demo.michaelsoriano.com/images/photodune-5771958-health-xs.jpg">
+          <p>Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      </li>
+      <li>
+          <img  alt="Constant consecutuir" src="http://demo.michaelsoriano.com/images/photodune-268693-businesswoman-using-laptop-outdoors-xs.jpg"><!--no alt tag-->
+          <p>Consectetur adipiscing elit, re magna aliqua. Ut enim ad minim veniam</p>
+      </li>
+      <li>
+          <img alt="Search code" src="http://demo.michaelsoriano.com/images/photodune-352207-search-of-code-s.jpg">
+          <p>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+      </li>
+
+      <li>
+          <img alt="Pountac" src="http://demo.michaelsoriano.com/images/photodune-247190-secret-email-xs.jpg"><!--no alt tag, no text-->
+          <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+      </li>
+    <li>
+        <img alt="Budget again" src="http://demo.michaelsoriano.com/images/photodune-2943363-budget-xs.jpg">
+        <p>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    </li>
+    <li>
+        <img alt="Some alt tag" src="http://demo.michaelsoriano.com/images/photodune-3444921-street-art-xs.jpg"><!--no alt-->
+        <p>Consectetur adipiscing elit, re magna aliqua. Ut enim ad minim veniam</p>
+    </li>
+    <li>
+        <img alt="Insurance boy"  src="http://demo.michaelsoriano.com/images/photodune-3552322-insurance-xs.jpg">
+        <p>Ut enim ad minim veniam</p>
+    </li>
+    <li>
+        <img alt="Food service"  src="http://demo.michaelsoriano.com/images/photodune-3807845-food-s.jpg">
+        <p>Eiusmod tempor enim ad minim veniam</p>
+    </li>
+    <li>
+        <img alt="Dopamine high"  src="http://demo.michaelsoriano.com/images/photodune-3835655-down-office-worker-xs.jpg">
+        <p>Ut enim ad minim veniam</p>
+    </li>
+
+  </ul>
+
+
+
+
+    </div> <!-- /container -->
+
+
+
+
+
+
+
+
+
   </body>
+
+
 </html>
