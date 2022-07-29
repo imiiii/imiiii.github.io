@@ -20,6 +20,8 @@ ul[data-bsp-ul-index] li {
     text-align: center;
 }
 #bsPhotoGalleryModal .bsp-text-container {
+  background:#7b614e;
+  color: ffc07e;
   text-align:left;
   padding-top:10px;
 }
