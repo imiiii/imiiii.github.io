@@ -52,11 +52,11 @@ ul[data-bsp-ul-index] li {
   white-space: nowrap;
 }
 .bspText {
-  color:#666;
+  color:#ffc10;
   font-size:11px;
   margin-bottom:10px;
   padding:12px;
-  background:#fff;
+  background:#7b614e;
 }
 
 #bsPhotoGalleryModal a.bsp-controls img {
