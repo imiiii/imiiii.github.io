@@ -111,14 +111,112 @@
   font-weight: 600;
 }
 
+.nomad-quote {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  margin: 0 auto 12px;
+  max-width: 640px;
+  opacity: 0.95;
+}
+
+.nomad-stats {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  margin: 0 auto 24px;
+  flex-wrap: wrap;
+}
+
+.nomad-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 72px;
+}
+
+.nomad-stats strong {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.nomad-stats span {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.nomad-tag {
+  display: inline-block;
+  background: rgba(20, 136, 204, 0.1);
+  color: #1488cc;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  margin: 0 2px;
+}
+
+.nomad-section-intro {
+  margin-top: -4px;
+  color: #666;
+}
+
+.nomad-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nomad-highlights span {
+  background: linear-gradient(135deg, rgba(43, 50, 178, 0.08), rgba(20, 136, 204, 0.12));
+  color: #2b32b2;
+  border: 1px solid rgba(20, 136, 204, 0.18);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.nomad-quotes {
+  display: grid;
+  gap: 16px;
+}
+
+.nomad-quotes blockquote {
+  margin: 0;
+  padding: 18px 20px;
+  border-left: 4px solid #1488cc;
+  background: #f7fbff;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.nomad-quotes cite {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: #666;
+  font-style: normal;
+}
+
+.nomad-places li {
+  margin-bottom: 14px;
+}
+
+.nomad-card a {
+  color: #1488cc;
+  font-weight: 600;
+}
+
 .nomad-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
   background: transparent;
   box-shadow: none;
   padding: 0;
 }
+
 
 .nomad-card {
   background: #fff;

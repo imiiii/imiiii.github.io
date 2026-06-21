@@ -5008,6 +5008,20 @@ a img {
     justify-self: center;
 }
 
+.tech-icons .tech-icon-angular {
+    font-size: 72px;
+}
+
+.tech-icons .devicon-html5-plain,
+.tech-icons .devicon-css3-plain,
+.tech-icons .devicon-bootstrap-plain,
+.tech-icons .devicon-python-plain,
+.tech-icons .devicon-nodejs-plain,
+.tech-icons .devicon-postgresql-plain,
+.tech-icons .devicon-visualstudio-plain {
+    font-size: 68px;
+}
+
 .tech-icons-languages {
     grid-template-columns: repeat(6, 36px);
     max-width: 240px;
@@ -5061,6 +5075,20 @@ a img {
 
     .tech-icons i {
         font-size: 75px;
+    }
+
+    .tech-icons .tech-icon-angular {
+        font-size: 88px;
+    }
+
+    .tech-icons .devicon-html5-plain,
+    .tech-icons .devicon-css3-plain,
+    .tech-icons .devicon-bootstrap-plain,
+    .tech-icons .devicon-python-plain,
+    .tech-icons .devicon-nodejs-plain,
+    .tech-icons .devicon-postgresql-plain,
+    .tech-icons .devicon-visualstudio-plain {
+        font-size: 82px;
     }
 
     .tech-icons-languages {

@@ -58,13 +58,6 @@
       description:
         "An upgraded ML factory with Radzen UI for visually building, testing, and managing machine learning workflows.",
       highlights: "Radzen UI • ML workflows • visual tooling"
-    },
-    {
-      name: "MLFactory-Plus-2",
-      language: "C#",
-      description:
-        "An extended ML factory codebase focused on reusable training pipelines, experimentation, and production-ready ML tooling.",
-      highlights: "ML automation • C# • experimentation"
     }
   ];
 
