@@ -39,6 +39,9 @@
           <a aria-label="My Github Profile" target="_blank" href="https://github.com/imiiii">
             <i class="icon fa fa-github-alt" aria-hidden="true"></i>
           </a>
+          <a aria-label="My Instagram" target="_blank" href="https://www.instagram.com/imi_______i/">
+            <i class="icon fa fa-instagram" aria-hidden="true"></i>
+          </a>
           <a aria-label="My Résumé" target="_blank" href="https://drive.google.com/file/d/1IBZ2s3fVC6fYXPsKR1xrM1UdJd-ido4U/view?usp=sharing">
             <i class="icon fa fa fa-file-pdf-o" aria-hidden="true"></i>
           </a>
@@ -49,8 +52,9 @@
         <div class="header-links">
           <a class="link" href="#about" data-scroll>About Me</a>
           <a class="link" href="#projects" data-scroll>Projects</a>
-		            <a class="link" href="https://imiiii.github.io/family.html" id="family" >Family</a>
-
+          <a class="link" href="#github-projects" data-scroll>GitHub</a>
+          <a class="link" href="./nomad.html">Digital Nomad</a>
+          <a class="link" href="./family.html" id="family">Family</a>
         </div>
       </div>
       <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
@@ -77,14 +81,25 @@
           />
         </picture>
        
-		<p>
-	I am a master's student in computer systems at the University of Shahid Beheshti and a research assistant at the Institute for Research in Fundamental Sciences.
-	My bachelor's major is software engineering, and I worked in the industry in this area for five years as a part-time full-stack developer while studying as a bachelor's student.</p>
-<p>	My background is a mixture of hardware and software engineering. My research interest areas are ML for systems or systems for ML. Generally, the intermediate representations between high-level and low-level languages. I gain an accommodating software engineering perspective to design automation systems and compilers for deep neural networks.</p>
-<p>	I am passionate about broadening my knowledge in different areas of computer science. I spend so much time learning about LLVM and MLIR, but if you know how to work with them, I will learn from you some new things because those are infinities, and each coder has its own style. It is kinda game playing for me to work with different levels of abstraction.
-	</p>
+	        <p>
+          I am a full-stack developer and ML engineer with a master's in computer systems from Shahid Beheshti University
+          and research experience at the Institute for Research in Fundamental Sciences. I have spent years shipping
+          production software — from enterprise systems and brokerage platforms to Chrome extensions, APIs, and ML
+          pipelines — while exploring how software and hardware meet in deep learning systems.
+        </p>
+        <p>
+          My background blends systems engineering with practical product development. I care about intermediate
+          representations between high-level and low-level languages, compilers, LLVM, and MLIR — but I am just as
+          happy building a polished web app that solves a real problem for a real user.
+        </p>
+        <p>
+          These days I work remotely, take on freelance projects, and document my digital nomad journey on Instagram
+          <a href="https://www.instagram.com/imi_______i/" target="_blank" rel="noopener noreferrer">@imi_______i</a>.
+          If you want to collaborate, my <a href="#github-projects" data-scroll>GitHub projects</a> are a good place to
+          see what I have been building lately.
+        </p>
       </div>
-<section id="projects">
+<section id="research">
       <div class="user-details">
         <h2>Research Project</h2>
       </div>
@@ -139,42 +154,42 @@
         <!-- Technology Stack #1: Languages -->
         <div class="tech">
           <h2>Languages</h2>
+          <i class="devicon-typescript-plain colored"></i>
           <i class="devicon-python-plain colored"></i>
           <i class="devicon-csharp-plain-wordmark colored"></i>
-          <i class="devicon-cplusplus-plain colored"></i>
           <i class="devicon-javascript-plain colored"></i>
-          <p>My favorite languages for systems programming, software engineering, and data analysis.</p>
+          <i class="devicon-cplusplus-plain colored"></i>
+          <p>TypeScript, Python, C#, and JavaScript for product development, APIs, and ML workflows.</p>
         </div>
 
         <!-- Technology Stack #2: Front-End -->
         <div class="tech">
           <h2>Front-End</h2>
-		  <i class="devicon-html5-plain-wordmark colored"></i>
+          <i class="devicon-angularjs-plain-wordmark colored"></i>
+          <i class="devicon-html5-plain-wordmark colored"></i>
           <i class="devicon-css3-plain-wordmark colored"></i>
-          <i class="devicon-jquery-plain-wordmark colored"></i>
           <i class="devicon-bootstrap-plain-wordmark colored"></i>
-         
-          <p>My preferred technologies for front-end web development and component design.</p>
+          <p>Angular, HTML5, CSS3, and Bootstrap for component-driven UI and responsive design.</p>
         </div>
 
         <!-- Technology Stack #3: Back-End -->
         <div class="tech">
           <h2>Back-End</h2>
-          <i class="devicon-nodejs-plain colored"></i>
-          <i class="devicon-angularjs-plain-wordmark colored"></i>
           <i class="devicon-dot-net-plain-wordmark colored"></i>
-          <i class="devicon-oracle-original colored"></i>
-          <p>My preferred technologies for back-end web programming and database architecture.</p>
+          <i class="devicon-python-plain colored"></i>
+          <i class="devicon-nodejs-plain colored"></i>
+          <i class="devicon-postgresql-plain colored"></i>
+          <p>ASP.NET, FastAPI, Node.js, and SQL databases for APIs, services, and data layers.</p>
         </div>
 
-        <!-- Technology Stack #4: Tools -->
+        <!-- Technology Stack #4: ML & Tools -->
         <div class="tech">
-          <h2>Tools</h2>
+          <h2>ML &amp; Tools</h2>
           <i class="devicon-git-plain-wordmark colored"></i>
-          <i class="devicon-visualstudio-plain colored"></i>
           <i class="devicon-github-plain-wordmark colored"></i>
           <i class="devicon-docker-plain-wordmark colored"></i>
-          <p>My favorite tools for version control, code editing, and container orchestration.</p>
+          <i class="devicon-visualstudio-plain colored"></i>
+          <p>PyTorch, TensorFlow, ML.NET, Git, Docker, and modern AI-assisted development workflows.</p>
         </div>
       </div>
     </section>
@@ -324,8 +339,34 @@
       </div>
     </section>
 
+    <section id="github-projects">
+      <div class="user-details">
+        <h2>GitHub Projects</h2>
+        <p id="github-projects-status">Loading repositories from GitHub...</p>
+      </div>
+      <div id="github-projects-grid" class="github-projects-grid" aria-live="polite"></div>
+
+      <div class="user-details github-private-heading">
+        <h3>Private &amp; Client Work</h3>
+        <p>
+          These repositories are private on GitHub, but they represent active products and client
+          projects I have built recently. Reach out if you would like a walkthrough or demo.
+        </p>
+      </div>
+      <div id="private-projects-grid" class="github-projects-grid" aria-live="polite"></div>
+
+      <p class="github-projects-more">
+        <a class="project-link" href="https://github.com/imiiii" target="_blank" rel="noopener noreferrer">
+          See public repositories on GitHub
+        </a>
+        <a class="project-link" href="mailto:imanbarzegari95@gmail.com?subject=Project%20demo%20request">
+          Request a private demo
+        </a>
+      </p>
+    </section>
+
     <footer class="footer">
-      <p>&copy; Iman Barzegari, 2022</p>
+      <p>&copy; Iman Barzegari, 2026</p>
     </footer>
 
     <!-- Import JS: Particles Theme -->
@@ -336,5 +377,6 @@
     <script src="./assets/js/google-analytics.js"></script>
     <!-- Import JS: Main Script -->
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/github-projects.js"></script>
   </body>
 </html>
