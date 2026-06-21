@@ -1,22 +1,26 @@
 (function () {
   var GITHUB_USER = "imiiii";
-  var HIDDEN_REPOS = new Set(["imiiii.github.io"]);
+  var HIDDEN_REPOS = new Set([
+    "imiiii.github.io",
+    "github-markdown-toc",
+    "SCVP.artifacts",
+    "SimplestMLP",
+    "BaseCode",
+    "DynamicIDataViewWrapper",
+    "DynamicTypeForML.Net",
+    "TensorFlow-Importer-to-TF-MLIR-dialect",
+    "Wiki-For-ML-Project",
+    "TestChartJs",
+    "Task_AB",
+    "my-resume"
+  ]);
   var FEATURED_ORDER = [
     "mosafer-paya",
     "chrome-extension",
     "DNN99",
     "AniccaMenu",
     "BaseCodeFramework",
-    "dotnet-webapi-boilerplate",
-    "DynamicTypeForML.Net",
-    "TensorFlow-Importer-to-TF-MLIR-dialect",
-    "Wiki-For-ML-Project",
-    "TestChartJs",
-    "Task_AB",
-    "my-resume",
-    "SimplestMLP",
-    "BaseCode",
-    "DynamicIDataViewWrapper"
+    "dotnet-webapi-boilerplate"
   ];
 
   var PRIVATE_PROJECTS = [
@@ -193,7 +197,7 @@
 
     var visibleRepos = sortRepos(
       repos.filter(function (repo) {
-        return !HIDDEN_REPOS.has(repo.name);
+        return !HIDDEN_REPOS.has(repo.name) && !repo.fork;
       })
     );
 

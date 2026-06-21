@@ -4984,7 +4984,53 @@ a img {
 }
 
 .tech {
-    margin: 10px
+    margin: 10px;
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 72px);
+    gap: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    min-height: 168px;
+    margin: 0 auto 12px;
+}
+
+.tech-icons i {
+    font-size: 60px;
+    line-height: 1;
+    justify-self: center;
+}
+
+.tech-icons-languages {
+    grid-template-columns: repeat(6, 36px);
+    max-width: 240px;
+}
+
+.tech-icons-languages i:nth-child(1) {
+    grid-column: 1 / 3;
+}
+
+.tech-icons-languages i:nth-child(2) {
+    grid-column: 3 / 5;
+}
+
+.tech-icons-languages i:nth-child(3) {
+    grid-column: 5 / 7;
+}
+
+.tech-icons-languages i:nth-child(4) {
+    grid-column: 2 / 4;
+}
+
+.tech-icons-languages i:nth-child(5) {
+    grid-column: 4 / 6;
 }
 
 .user {
@@ -4994,16 +5040,32 @@ a img {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    clear: both;
 }
 
 .user p {
-    font-size: 16px
+    font-size: 16px;
+    max-width: 220px;
 }
 
 @media only screen and (min-width:550px) {
     .user {
         flex-wrap: nowrap;
-        font-size: 75px
+        font-size: 75px;
+    }
+
+    .tech-icons {
+        grid-template-columns: repeat(2, 80px);
+        min-height: 188px;
+    }
+
+    .tech-icons i {
+        font-size: 75px;
+    }
+
+    .tech-icons-languages {
+        grid-template-columns: repeat(6, 40px);
+        max-width: 280px;
     }
 }
 
@@ -5028,7 +5090,66 @@ a img {
 }
 
 .user-projects {
-    margin: 20px auto
+    margin: 20px auto;
+    clear: both;
+    overflow: hidden;
+}
+
+#research {
+    clear: both;
+    overflow: hidden;
+    margin: 40px auto 24px;
+    width: 100%;
+}
+
+#research .research-heading {
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+}
+
+#research .research-project {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: center;
+    margin-top: 0;
+    float: none;
+}
+
+#research .research-image,
+#research .research-content {
+    float: none;
+    width: 100%;
+    margin-top: 0;
+}
+
+#research .research-image img {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+#research .research-content {
+    text-align: left;
+}
+
+#research .research-content h3 {
+    margin-top: 0;
+    text-align: center;
+}
+
+#research .research-content p {
+    text-align: justify;
+    margin-right: 0;
+}
+
+@media only screen and (min-width:550px) {
+    #research .research-project {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
 }
 
 .user-projects img {
@@ -5183,12 +5304,14 @@ color: black;
   align-items: center;
   font-size: 0.9rem;
   color: #666;
+  min-height: 28px;
 }
 
 .github-repo-language {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  line-height: 1;
 }
 
 .github-repo-language-dot {
