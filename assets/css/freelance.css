@@ -1,0 +1,368 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600;700&display=swap");
+
+.freelance-page {
+  background: #0f1419;
+  color: #e8edf2;
+}
+
+.freelance-page.freelance-rtl {
+  font-family: "Vazirmatn", "Nunito Sans", sans-serif;
+}
+
+.freelance-page.freelance-rtl .freelance-lang-select {
+  padding-right: 14px;
+  padding-left: 28px;
+  background-position:
+    calc(8px) calc(50% - 2px),
+    calc(13px) calc(50% - 2px);
+}
+
+.freelance-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  gap: 12px;
+}
+
+html[lang="hy"] .freelance-page {
+  font-family: "Noto Sans Armenian", "Nunito Sans", sans-serif;
+}
+
+.freelance-back,
+.freelance-lang-select {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 0.92rem;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease;
+}
+
+.freelance-lang-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.freelance-lang-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.freelance-lang-select {
+  appearance: none;
+  min-width: 148px;
+  max-width: min(220px, 42vw);
+  padding-right: 28px;
+  padding-left: 14px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.85) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.85) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) calc(50% - 2px),
+    calc(100% - 9px) calc(50% - 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.freelance-lang-select option {
+  color: #111;
+  background: #fff;
+}
+
+.freelance-back:hover,
+.freelance-lang-select:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+
+.freelance-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 96px 24px 72px;
+  overflow: hidden;
+}
+
+.freelance-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 18, 0.55) 0%, rgba(8, 12, 18, 0.82) 70%, #0f1419 100%),
+    url("../img/nomad/hormoz-heaven-valley.jpg") center / cover no-repeat;
+  transform: scale(1.03);
+}
+
+.freelance-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.freelance-eyebrow {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.freelance-hero h1 {
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(2.4rem, 7vw, 4.2rem);
+  line-height: 1.08;
+  margin: 0 0 18px;
+}
+
+.freelance-lead {
+  margin: 0 auto 30px;
+  max-width: 680px;
+  font-size: clamp(1.02rem, 2.5vw, 1.2rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.freelance-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.freelance-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(20, 136, 204, 0.22);
+  border: 1px solid rgba(20, 136, 204, 0.45);
+  color: #d9f2ff;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.freelance-hero-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.freelance-cta,
+.freelance-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.freelance-cta {
+  background: #fff;
+  color: #1488cc;
+}
+
+.freelance-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  color: #0f6fa8;
+}
+
+.freelance-cta-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.82);
+  color: #fff;
+}
+
+.freelance-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.freelance-content {
+  width: min(1040px, 92%);
+  margin: 0 auto;
+  padding: 8px 0 64px;
+}
+
+.freelance-section {
+  background: #171d25;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 32px 28px;
+  margin-bottom: 24px;
+}
+
+.freelance-section h2 {
+  margin: 0 0 10px;
+  color: #fff;
+  font-family: "Rubik", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.freelance-section-intro {
+  margin: 0 0 24px;
+  color: #a8b4c0;
+  line-height: 1.75;
+  max-width: 720px;
+}
+
+.freelance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.freelance-card {
+  background: #11161d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 22px 20px;
+}
+
+.freelance-card h3 {
+  margin: 0 0 10px;
+  color: #7dd3fc;
+  font-size: 1.08rem;
+}
+
+.freelance-card p {
+  margin: 0;
+  color: #b7c3cf;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.freelance-gallery-label {
+  margin: 0 0 12px;
+  color: #7dd3fc;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.freelance-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.freelance-gallery:last-child {
+  margin-bottom: 0;
+}
+
+.freelance-gallery-item {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #11161d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 0.2s ease;
+}
+
+.freelance-gallery-item:hover {
+  transform: translateY(-3px);
+}
+
+.freelance-gallery-item img {
+  display: block;
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+}
+
+.freelance-gallery-item span {
+  display: block;
+  padding: 10px 12px;
+  color: #d5dee8;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.freelance-why {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.freelance-contact {
+  text-align: center;
+}
+
+.freelance-contact p {
+  max-width: 620px;
+  margin: 0 auto 22px;
+  color: #b7c3cf;
+  line-height: 1.75;
+}
+
+.freelance-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.freelance-contact-links a {
+  color: #7dd3fc;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.35);
+  background: rgba(125, 211, 252, 0.08);
+}
+
+.freelance-contact-links a:hover {
+  background: rgba(125, 211, 252, 0.16);
+}
+
+.freelance-footer {
+  text-align: center;
+  padding: 24px;
+  color: #7b8794;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .freelance-topbar {
+    padding: 14px 16px;
+  }
+
+  .freelance-hero {
+    min-height: 88vh;
+    padding-top: 88px;
+  }
+
+  .freelance-section {
+    padding: 24px 18px;
+  }
+}

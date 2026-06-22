@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""Generate freelance locale JSON files from en.json using Google Translate."""
+
+from __future__ import annotations
+
+import json
+import time
+from pathlib import Path
+
+try:
+    from deep_translator import GoogleTranslator
+except ImportError:
+    raise SystemExit("Install: pip install deep-translator")
+
+ROOT = Path(__file__).resolve().parents[1]
+LOCALE_DIR = ROOT / "assets" / "i18n" / "freelance"
+EN_PATH = LOCALE_DIR / "en.json"
+SKIP = {"en", "fa", "tr", "hy"}
+
+# Google Translate target codes + native labels (manifest)
+LANGUAGES = [
+    {"code": "en", "label": "English", "dir": "ltr"},
+    {"code": "fa", "label": "فارسی", "dir": "rtl"},
+    {"code": "ar", "label": "العربية", "dir": "rtl"},
+    {"code": "hy", "label": "Հայերեն", "dir": "ltr"},
+    {"code": "az", "label": "Azərbaycan", "dir": "ltr"},
+    {"code": "tr", "label": "Türkçe", "dir": "ltr"},
+    {"code": "ru", "label": "Русский", "dir": "ltr"},
+    {"code": "de", "label": "Deutsch", "dir": "ltr"},
+    {"code": "fr", "label": "Français", "dir": "ltr"},
+    {"code": "es", "label": "Español", "dir": "ltr"},
+    {"code": "it", "label": "Italiano", "dir": "ltr"},
+    {"code": "pt", "label": "Português", "dir": "ltr"},
+    {"code": "nl", "label": "Nederlands", "dir": "ltr"},
+    {"code": "pl", "label": "Polski", "dir": "ltr"},
+    {"code": "uk", "label": "Українська", "dir": "ltr"},
+    {"code": "cs", "label": "Čeština", "dir": "ltr"},
+    {"code": "sk", "label": "Slovenčina", "dir": "ltr"},
+    {"code": "hu", "label": "Magyar", "dir": "ltr"},
+    {"code": "ro", "label": "Română", "dir": "ltr"},
+    {"code": "bg", "label": "Български", "dir": "ltr"},
+    {"code": "hr", "label": "Hrvatski", "dir": "ltr"},
+    {"code": "sr", "label": "Српски", "dir": "ltr"},
+    {"code": "sl", "label": "Slovenščina", "dir": "ltr"},
+    {"code": "mk", "label": "Македонски", "dir": "ltr"},
+    {"code": "sq", "label": "Shqip", "dir": "ltr"},
+    {"code": "el", "label": "Ελληνικά", "dir": "ltr"},
+    {"code": "he", "label": "עברית", "dir": "rtl"},
+    {"code": "hi", "label": "हिन्दी", "dir": "ltr"},
+    {"code": "bn", "label": "বাংলা", "dir": "ltr"},
+    {"code": "ur", "label": "اردو", "dir": "rtl"},
+    {"code": "ps", "label": "پښتو", "dir": "rtl"},
+    {"code": "ta", "label": "தமிழ்", "dir": "ltr"},
+    {"code": "te", "label": "తెలుగు", "dir": "ltr"},
+    {"code": "ml", "label": "മലയാളം", "dir": "ltr"},
+    {"code": "kn", "label": "ಕನ್ನಡ", "dir": "ltr"},
+    {"code": "gu", "label": "ગુજરાતી", "dir": "ltr"},
+    {"code": "pa", "label": "ਪੰਜਾਬੀ", "dir": "ltr"},
+    {"code": "mr", "label": "मराठी", "dir": "ltr"},
+    {"code": "ne", "label": "नेपाली", "dir": "ltr"},
+    {"code": "si", "label": "සිංහල", "dir": "ltr"},
+    {"code": "km", "label": "ខ្មែរ", "dir": "ltr"},
+    {"code": "th", "label": "ไทย", "dir": "ltr"},
+    {"code": "vi", "label": "Tiếng Việt", "dir": "ltr"},
+    {"code": "id", "label": "Bahasa Indonesia", "dir": "ltr"},
+    {"code": "ms", "label": "Bahasa Melayu", "dir": "ltr"},
+    {"code": "fil", "label": "Filipino", "dir": "ltr"},
+    {"code": "zh-CN", "label": "中文 (简体)", "dir": "ltr"},
+    {"code": "zh-TW", "label": "中文 (繁體)", "dir": "ltr"},
+    {"code": "ja", "label": "日本語", "dir": "ltr"},
+    {"code": "ko", "label": "한국어", "dir": "ltr"},
+    {"code": "mn", "label": "Монгол", "dir": "ltr"},
+    {"code": "kk", "label": "Қазақ", "dir": "ltr"},
+    {"code": "uz", "label": "Oʻzbek", "dir": "ltr"},
+    {"code": "ky", "label": "Кыргызча", "dir": "ltr"},
+    {"code": "tg", "label": "Тоҷикӣ", "dir": "ltr"},
+    {"code": "tk", "label": "Türkmen", "dir": "ltr"},
+    {"code": "am", "label": "አማርኛ", "dir": "ltr"},
+    {"code": "sw", "label": "Kiswahili", "dir": "ltr"},
+    {"code": "zu", "label": "isiZulu", "dir": "ltr"},
+    {"code": "af", "label": "Afrikaans", "dir": "ltr"},
+    {"code": "yo", "label": "Yorùbá", "dir": "ltr"},
+    {"code": "ig", "label": "Igbo", "dir": "ltr"},
+    {"code": "ha", "label": "Hausa", "dir": "ltr"},
+    {"code": "eu", "label": "Euskara", "dir": "ltr"},
+    {"code": "ca", "label": "Català", "dir": "ltr"},
+    {"code": "gl", "label": "Galego", "dir": "ltr"},
+    {"code": "cy", "label": "Cymraeg", "dir": "ltr"},
+    {"code": "ga", "label": "Gaeilge", "dir": "ltr"},
+    {"code": "is", "label": "Íslenska", "dir": "ltr"},
+    {"code": "da", "label": "Dansk", "dir": "ltr"},
+    {"code": "no", "label": "Norsk", "dir": "ltr"},
+    {"code": "sv", "label": "Svenska", "dir": "ltr"},
+    {"code": "fi", "label": "Suomi", "dir": "ltr"},
+    {"code": "et", "label": "Eesti", "dir": "ltr"},
+    {"code": "lv", "label": "Latviešu", "dir": "ltr"},
+    {"code": "lt", "label": "Lietuvių", "dir": "ltr"},
+    {"code": "mt", "label": "Malti", "dir": "ltr"},
+    {"code": "bs", "label": "Bosanski", "dir": "ltr"},
+    {"code": "be", "label": "Беларуская", "dir": "ltr"},
+    {"code": "ka", "label": "ქართული", "dir": "ltr"},
+    {"code": "ku", "label": "Kurdî", "dir": "rtl"},
+    {"code": "sd", "label": "سنڌي", "dir": "rtl"},
+    {"code": "ug", "label": "ئۇيغۇرچە", "dir": "rtl"},
+    {"code": "jv", "label": "Basa Jawa", "dir": "ltr"},
+    {"code": "su", "label": "Basa Sunda", "dir": "ltr"},
+    {"code": "ceb", "label": "Cebuano", "dir": "ltr"},
+    {"code": "haw", "label": "ʻŌlelo Hawaiʻi", "dir": "ltr"},
+    {"code": "mg", "label": "Malagasy", "dir": "ltr"},
+    {"code": "mi", "label": "Te Reo Māori", "dir": "ltr"},
+    {"code": "sm", "label": "Gagana Samoa", "dir": "ltr"},
+    {"code": "eo", "label": "Esperanto", "dir": "ltr"},
+    {"code": "la", "label": "Latina", "dir": "ltr"},
+    {"code": "my", "label": "မြန်မာ", "dir": "ltr"},
+    {"code": "lo", "label": "ລາວ", "dir": "ltr"},
+    {"code": "so", "label": "Soomaali", "dir": "ltr"},
+    {"code": "rw", "label": "Kinyarwanda", "dir": "ltr"},
+    {"code": "xh", "label": "isiXhosa", "dir": "ltr"},
+    {"code": "st", "label": "Sesotho", "dir": "ltr"},
+    {"code": "sn", "label": "chiShona", "dir": "ltr"},
+    {"code": "ny", "label": "Chichewa", "dir": "ltr"},
+    {"code": "hmn", "label": "Hmong", "dir": "ltr"},
+    {"code": "ht", "label": "Kreyòl Ayisyen", "dir": "ltr"},
+    {"code": "fy", "label": "Frysk", "dir": "ltr"},
+    {"code": "gd", "label": "Gàidhlig", "dir": "ltr"},
+    {"code": "lb", "label": "Lëtzebuergesch", "dir": "ltr"},
+    {"code": "yi", "label": "ייִדיש", "dir": "rtl"},
+]
+
+# ISO 3166-1 alpha-2 → locale code (primary web language)
+COUNTRY_TO_LANG = {
+    "AD": "ca", "AE": "ar", "AF": "ps", "AG": "en", "AI": "en", "AL": "sq", "AM": "hy",
+    "AO": "pt", "AQ": "en", "AR": "es", "AS": "en", "AT": "de", "AU": "en", "AW": "nl",
+    "AX": "sv", "AZ": "az", "BA": "bs", "BB": "en", "BD": "bn", "BE": "nl", "BF": "fr",
+    "BG": "bg", "BH": "ar", "BI": "fr", "BJ": "fr", "BL": "fr", "BM": "en", "BN": "ms",
+    "BO": "es", "BQ": "nl", "BR": "pt", "BS": "en", "BT": "ne", "BV": "no", "BW": "en",
+    "BY": "be", "BZ": "en", "CA": "en", "CC": "en", "CD": "fr", "CF": "fr", "CG": "fr",
+    "CH": "de", "CI": "fr", "CK": "en", "CL": "es", "CM": "fr", "CN": "zh-CN", "CO": "es",
+    "CR": "es", "CU": "es", "CV": "pt", "CW": "nl", "CX": "en", "CY": "el", "CZ": "cs",
+    "DE": "de", "DJ": "fr", "DK": "da", "DM": "en", "DO": "es", "DZ": "ar", "EC": "es",
+    "EE": "et", "EG": "ar", "EH": "ar", "ER": "ti", "ES": "es", "ET": "am", "FI": "fi",
+    "FJ": "en", "FK": "en", "FM": "en", "FO": "fo", "FR": "fr", "GA": "fr", "GB": "en",
+    "GD": "en", "GE": "ka", "GF": "fr", "GG": "en", "GH": "en", "GI": "en", "GL": "kl",
+    "GM": "en", "GN": "fr", "GP": "fr", "GQ": "es", "GR": "el", "GS": "en", "GT": "es",
+    "GU": "en", "GW": "pt", "GY": "en", "HK": "zh-TW", "HM": "en", "HN": "es", "HR": "hr",
+    "HT": "ht", "HU": "hu", "ID": "id", "IE": "en", "IL": "he", "IM": "en", "IN": "hi",
+    "IO": "en", "IQ": "ar", "IR": "fa", "IS": "is", "IT": "it", "JE": "en", "JM": "en",
+    "JO": "ar", "JP": "ja", "KE": "sw", "KG": "ky", "KH": "km", "KI": "en", "KM": "ar",
+    "KN": "en", "KP": "ko", "KR": "ko", "KW": "ar", "KY": "en", "KZ": "kk", "LA": "lo",
+    "LB": "ar", "LC": "en", "LI": "de", "LK": "si", "LR": "en", "LS": "en", "LT": "lt",
+    "LU": "fr", "LV": "lv", "LY": "ar", "MA": "ar", "MC": "fr", "MD": "ro", "ME": "sr",
+    "MF": "fr", "MG": "mg", "MH": "en", "MK": "mk", "ML": "fr", "MM": "my", "MN": "mn",
+    "MO": "zh-TW", "MP": "en", "MQ": "fr", "MR": "ar", "MS": "en", "MT": "mt", "MU": "en",
+    "MV": "en", "MW": "en", "MX": "es", "MY": "ms", "MZ": "pt", "NA": "en", "NC": "fr",
+    "NE": "fr", "NF": "en", "NG": "en", "NI": "es", "NL": "nl", "NO": "no", "NP": "ne",
+    "NR": "en", "NU": "en", "NZ": "en", "OM": "ar", "PA": "es", "PE": "es", "PF": "fr",
+    "PG": "en", "PH": "fil", "PK": "ur", "PL": "pl", "PM": "fr", "PN": "en", "PR": "es",
+    "PS": "ar", "PT": "pt", "PW": "en", "PY": "es", "QA": "ar", "RE": "fr", "RO": "ro",
+    "RS": "sr", "RU": "ru", "RW": "rw", "SA": "ar", "SB": "en", "SC": "fr", "SD": "ar",
+    "SE": "sv", "SG": "en", "SH": "en", "SI": "sl", "SJ": "no", "SK": "sk", "SL": "en",
+    "SM": "it", "SN": "fr", "SO": "so", "SR": "nl", "SS": "en", "ST": "pt", "SV": "es",
+    "SX": "nl", "SY": "ar", "SZ": "en", "TC": "en", "TD": "fr", "TF": "fr", "TG": "fr",
+    "TH": "th", "TJ": "tg", "TK": "en", "TL": "pt", "TM": "tk", "TN": "ar", "TO": "en",
+    "TR": "tr", "TT": "en", "TV": "en", "TW": "zh-TW", "TZ": "sw", "UA": "uk", "UG": "en",
+    "UM": "en", "US": "en", "UY": "es", "UZ": "uz", "VA": "it", "VC": "en", "VE": "es",
+    "VG": "en", "VI": "en", "VN": "vi", "VU": "en", "WF": "fr", "WS": "sm", "XK": "sq",
+    "YE": "ar", "YT": "fr", "ZA": "en", "ZM": "en", "ZW": "en",
+}
+
+# Map unsupported country langs to closest available
+FALLBACK_LANG = {
+    "ti": "en", "fo": "da", "kl": "da", "dv": "ar",
+}
+
+
+DELIM = "⟦I18N⟧"
+
+
+def translate_locale(code: str, source: dict[str, str]) -> dict[str, str]:
+    keys = list(source.keys())
+    values = [source[k] for k in keys]
+    translator = GoogleTranslator(source="en", target=code)
+
+    translatable_idx = [i for i, k in enumerate(keys) if k not in ("contactEmail", "contactPhone")]
+    batch = DELIM.join(values[i] for i in translatable_idx)
+
+    try:
+        translated_batch = translator.translate(batch)
+        translated_parts = translated_batch.split(DELIM)
+        if len(translated_parts) != len(translatable_idx):
+            raise ValueError(f"split mismatch {len(translated_parts)} != {len(translatable_idx)}")
+    except Exception as exc:  # noqa: BLE001
+        print(f"  batch failed for {code}: {exc}; falling back per-key")
+        translated_parts = None
+
+    out: dict[str, str] = {}
+    part_i = 0
+    for i, key in enumerate(keys):
+        if key in ("contactEmail", "contactPhone"):
+            out[key] = values[i]
+            continue
+        if translated_parts is not None:
+            out[key] = translated_parts[part_i]
+            part_i += 1
+        else:
+            try:
+                out[key] = translator.translate(values[i])
+                time.sleep(0.1)
+            except Exception as exc2:  # noqa: BLE001
+                print(f"  warn {code}.{key}: {exc2}")
+                out[key] = values[i]
+    return out
+
+
+def main() -> None:
+    LOCALE_DIR.mkdir(parents=True, exist_ok=True)
+    source = json.loads(EN_PATH.read_text(encoding="utf-8"))
+
+    manifest = {
+        "defaultLang": "en",
+        "languages": LANGUAGES,
+        "countryToLang": COUNTRY_TO_LANG,
+        "fallbackLang": FALLBACK_LANG,
+    }
+    (LOCALE_DIR / "manifest.json").write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print("Wrote manifest.json")
+
+    codes = [lang["code"] for lang in LANGUAGES]
+    for code in codes:
+        path = LOCALE_DIR / f"{code}.json"
+        if code in SKIP and path.exists():
+            print(f"skip {code} (hand-crafted)")
+            continue
+        if code == "en":
+            continue
+        print(f"translate {code}...")
+        translated = translate_locale(code, source)
+        path.write_text(json.dumps(translated, ensure_ascii=False, indent=2), encoding="utf-8")
+        time.sleep(0.4)
+
+    print("Done.")
+
+
+if __name__ == "__main__":
+    main()

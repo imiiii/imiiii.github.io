@@ -1,168 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>My family's photo gallery</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A birthday gift photo album for Ebi — family memories from Yazd, adventures, and moments captured by Dad."
+    />
+    <meta name="author" content="Iman Barzegari" />
+    <link rel="shortcut icon" href="./assets/img/personal.ico" />
+    <title>Family Album for Ebi | Iman Barzegari</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/family.css" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/css/gallery.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
-    <link href="./assets/css/gallery.css" rel="stylesheet">
-    <script src="./assets/js/gallery.js"></script>	
-	
-    </script>
+    <script src="./assets/js/gallery.js"></script>
     <script>
-      $(document).ready(function(){
-        $('ul.first').bsPhotoGallery({
-          "classes" : "col-xl-3 col-lg-2 col-md-4 col-sm-4",
-          "hasModal" : true,
-          "shortText" : false  
+      $(document).ready(function () {
+        $("ul.first").bsPhotoGallery({
+          classes: "col-xl-3 col-lg-4 col-md-4 col-sm-6",
+          hasModal: true,
+          shortText: false,
         });
       });
     </script>
   </head>
-  <style>
-      /**************STYLES ONLY FOR DEMO PAGE**************/
-      @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
-      body {
-        background:#e69d43;
-      }   
-  </style>
-  <body>
-    <div class="container">
-        <div class="row" style="text-align:center; border-bottom:1px dashed #ccc;  padding:30px 0 20px 0; margin-bottom:40px;">
-            <div class="col-lg-12">
-            <h3 style="font-family:'Bree Serif', arial; font-weight:bold; font-size:30px;">
-                <p style="text-decoration:none; color:#7b614e;" >This is a photo gallery of my family :) gifted to my brothers 
-            </h3>
-			<p> <span style="color: #ffef2b99">I used these colors because our ancestors come from Yazd.</span></p>
-            <p style="color:#7b614e;  font-weight: bold;"> The family name does not matter. Seriously it is more about our genes. I have two brothers, a five years older brother, Ebi, and a twelve years old younger one, Arman.</p>
-			<p style="color:#7b614e;  font-weight: bold;">Ebi is an expert in the data science area and much more; he got his Ph.D. in Seattle. He traveled all around the United States in two years. <br><strong><a style="color:#f1515199;  " href="https://ebzgr.github.io/">Ebi's homepage </a></strong></p> 
-			<p style="color:#7b614e;  font-weight: bold;"> He taught me a lot of things as an older brother and even more as a mentor; he taught me many soft and hard skills. Ebi is one of the most self-motivated and intelligent people I have ever seen in my life, and I am happy because that person is my brother :D </p>
-			<p style="color:#7b614e;  font-weight: bold;"> Arman is a teenager who likes to work with robotic kinds of stuff. He built a lot of robot gadgets with Arduino. He is a greate Fortnite player. <br> <strong> He does not have a homepage yet. </strong></p>
-			<p style="color:#7b614e;  font-weight: bold;"> My father takes these pictures. he like photography and gathering photographs so much. I think he is talented.</p>
-            </div>
+  <body class="family-page">
+    <header class="family-hero">
+      <a class="family-back" href="./index.html">&larr; Back to homepage</a>
+      <p class="family-gift-badge">&#127873; A birthday gift</p>
+      <h1>
+        For Ebi, My Older Brother
+        <span>A family photo album made with love</span>
+      </h1>
+      <p class="family-lead">
+        I started this page as a birthday gift for Ebi — the brother who taught me more than
+        anyone, mentored me through school and life, and showed me what dedication looks like.
+        These are our memories, captured by Dad.
+      </p>
+      <div class="family-hero-links">
+        <a
+          class="family-cta"
+          href="https://ebzgr.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit Ebi's homepage
+        </a>
+        <a class="family-cta-secondary" href="#memories" data-scroll>Explore the album</a>
+      </div>
+    </header>
+
+    <main class="family-content">
+      <section class="family-section">
+        <div class="family-gift-card">
+          <span class="gift-label">Happy Birthday, Ebi</span>
+          <p>
+            This album is my gift to you — a small thank-you for being the best older brother and
+            mentor I could ask for. From desert roads in Yazd to goodbyes at the airport, every
+            photo here is a piece of our story.
+            <span class="yazd-note">Warm Yazd colors, on purpose — that's where our roots are.</span>
+          </p>
         </div>
+      </section>
 
-        <ul class="row first">
+      <section class="family-section">
+        <h2>New Memories</h2>
+        <p class="family-section-intro">
+          Two fresh photos from a recent family adventure — golden hour in the desert, all of us
+          together among the hoodoos.
+        </p>
+        <div class="family-featured-grid">
+          <figure class="family-featured-item">
+            <span class="new-tag">New</span>
+            <img
+              src="./assets/img/ebi/ebi26.jpg"
+              alt="The whole family together in the desert at golden hour"
+              loading="lazy"
+            />
+            <figcaption>
+              Our whole family together in the desert — golden hour among the hoodoos.
+            </figcaption>
+          </figure>
+          <figure class="family-featured-item">
+            <span class="new-tag">New</span>
+            <img
+              src="./assets/img/ebi/ebi27.jpg"
+              alt="Another beautiful moment from our desert adventure"
+              loading="lazy"
+            />
+            <figcaption>
+              Another beautiful moment from our desert adventure. Dad's photography at its finest.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="family-section">
+        <h2>Our Family</h2>
+        <p class="family-section-intro">
+          The family name does not matter — it's more about our genes. I have two brothers: Ebi,
+          five years older, and Arman, twelve years younger.
+        </p>
+        <div class="family-about-grid">
+          <article class="family-about-card">
+            <h3>Ebi</h3>
+            <p>
+              A data science expert who earned his Ph.D. in Seattle and traveled across the United
+              States for two years. He taught me soft skills and hard skills — as a brother and as
+              a mentor.
+              <a href="https://ebzgr.github.io/" target="_blank" rel="noopener noreferrer"
+                >Ebi's homepage</a
+              >
+            </p>
+          </article>
+          <article class="family-about-card">
+            <h3>Arman</h3>
+            <p>
+              Our younger brother — a teenager who builds robot gadgets with Arduino and is a great
+              Fortnite player. He does not have a homepage yet, but give him time.
+            </p>
+          </article>
+          <article class="family-about-card">
+            <h3>Dad, the photographer</h3>
+            <p>
+              My father takes these pictures. He loves photography and gathering photographs — and I
+              think he is genuinely talented.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="memories" class="family-section family-gallery-section">
+        <h2>The Full Album</h2>
+        <p class="family-section-intro">
+          Tap any photo to open it full-size. Every frame is a chapter of our story.
+        </p>
+        <div class="container">
+          <ul class="row first">
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi1.jpg">
-                <p>Our father believes that his sons have to work in summer times</p>
+              <img alt="Family in the desert at golden hour" src="./assets/img/ebi/ebi26.jpg" />
+              <p>Our whole family together in the desert — golden hour among the hoodoos.</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi2.jpg">
-                <p>His studying style</p>
+              <img alt="Desert family adventure" src="./assets/img/ebi/ebi27.jpg" />
+              <p>Another beautiful moment from our desert adventure.</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi3.jpg">
-                 <p>Welcoming the first PC to our home <br> I learned how to work with the Computer because every time Ebi worked with it, I sat there to see how it worked.</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi1.jpg" />
+              <p>Our father believes that his sons have to work in summer times</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi4.jpg">
-                <p>Caspian sea <br> my father and me and Ebi</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi2.jpg" />
+              <p>His studying style</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi5.jpg">
-                <p>The death wall </p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi3.jpg" />
+              <p>
+                Welcoming the first PC to our home <br />
+                I learned how to work with the Computer because every time Ebi worked with it, I sat
+                there to see how it worked.
+              </p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi6.jpg">
-                <p>Hafez's tomb</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi4.jpg" />
+              <p>Caspian sea <br />my father and me and Ebi</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi7.jpg">
-                <p>Our lil bro's birthday </p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi5.jpg" />
+              <p>The death wall</p>
             </li>
             <li>
-                <img alt="Family Gallery" src="./assets/img/ebi/ebi10.jpg">
-                <p>Ebi and our cool uncle mostafa.</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi6.jpg" />
+              <p>Hafez's tomb</p>
             </li>
             <li>
-                <img alt="Family Gallery"  src="./assets/img/ebi/ebi11.jpg">
-                <p>Horse riding in the deserts of Yazd.</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi7.jpg" />
+              <p>Our lil bro's birthday</p>
             </li>
             <li>
-                <img alt="Family Gallery" src="./assets/img/ebi/ebi12.jpg">
-                <p>Nothing about it, but it is very beautiful picture.</p>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi10.jpg" />
+              <p>Ebi and our cool uncle mostafa.</p>
             </li>
-
-      <li>
-          <img alt="Family Gallery" src="./assets/img/ebi/ebi13.jpg">
-          <p>Amazing trip to Mashhad and horse riding in the jungle.</p>
-      </li>
-      <li>
-          <img alt="Family Gallery"  src="./assets/img/ebi/ebi14.jpg">
-          <p>Ebi and our grandfather. Ebi is his oldest grandchild.</p>
-      </li>
-      <li>
-          <img alt="Family Gallery"  src="./assets/img/ebi/ebi15.jpg">
-          <p>Our lil bro's birthday again.</p>
-      </li>
-
-
-      <li>
-          <img alt="Family Gallery"  src="./assets/img/ebi/ebi16.jpg">
-          <p>And our lil bro's birthday again. look at his cute face man :D</p>
-      </li>
-
-      
-      
-      <li>
-          <img alt="Family Gallery" src="./assets/img/ebi/ebi20.jpg">
-          <p>Ebi's first bicycle.</p>
-      </li>
-      <li>
-          <img  alt="Family Gallery" src="./assets/img/ebi/ebi21.jpg"><!--no alt tag-->
-          <p>Chamran's park in Karaj</p>
-      </li>
-      <li>
-          <img alt="Family Gallery" src="./assets/img/ebi/ebi22.jpg">
-          <p>Banadkook is here :) located in Yazd.</p>
-      </li>
-
-      <li>
-          <img alt="Family Gallery" src="./assets/img/ebi/ebi23.jpg"><!--no alt tag, no text-->
-          <p>Banadkook old tree in Yazd.</p>
-      </li>
-    <li>
-        <img alt="Family Gallery" src="./assets/img/ebi/ebi24.jpg">
-        <p>Ebi's birthday with his cool cake</p>
-    </li>
-    <li>
-        <img alt="Family Gallery" src="./assets/img/ebi/ebi25.jpg"><!--no alt-->
-        <p>Ebi's gang style</p>
-    </li>
-    <li>
-        <img alt="Family Gallery"  src="./assets/img/ebi/ebis.jpeg">
-        <p>Our first goodbye at the airport <br> Ebi goes abroad to study for his Ph.D. program in the united state.</p>
-    </li>
-    <li>
-        <img alt="Family Gallery"  src="./assets/img/ebi/ebis2.jpeg">
-        <p>Our second goodbye at the airport</p>
-    </li>
-   
-
-  </ul>
-
-
-
-
-    </div> <!-- /container -->
-
-
-
-
-
-
-
-
-
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi11.jpg" />
+              <p>Horse riding in the deserts of Yazd.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi12.jpg" />
+              <p>Nothing about it, but it is very beautiful picture.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi13.jpg" />
+              <p>Amazing trip to Mashhad and horse riding in the jungle.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi14.jpg" />
+              <p>Ebi and our grandfather. Ebi is his oldest grandchild.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi15.jpg" />
+              <p>Our lil bro's birthday again.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi16.jpg" />
+              <p>And our lil bro's birthday again. look at his cute face man :D</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi20.jpg" />
+              <p>Ebi's first bicycle.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi21.jpg" />
+              <p>Chamran's park in Karaj</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi22.jpg" />
+              <p>Banadkook is here :) located in Yazd.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi23.jpg" />
+              <p>Banadkook old tree in Yazd.</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi24.jpg" />
+              <p>Ebi's birthday with his cool cake</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebi25.jpg" />
+              <p>Ebi's gang style</p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebis.jpeg" />
+              <p>
+                Our first goodbye at the airport <br />
+                Ebi goes abroad to study for his Ph.D. program in the united state.
+              </p>
+            </li>
+            <li>
+              <img alt="Family Gallery" src="./assets/img/ebi/ebis2.jpeg" />
+              <p>Our second goodbye at the airport</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
   </body>
-
-
 </html>
