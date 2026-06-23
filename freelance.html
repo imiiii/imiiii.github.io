@@ -17,7 +17,20 @@
   </head>
   <body class="freelance-page">
     <header class="freelance-hero">
-      <div class="freelance-hero-bg" aria-hidden="true"></div>
+      <div class="freelance-hero-bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcset="./assets/img/freelance/hero-bg.webp" />
+          <img
+            src="./assets/img/freelance/hero-bg.jpg"
+            alt=""
+            width="1920"
+            height="1280"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </picture>
+        <div class="freelance-hero-overlay"></div>
+      </div>
       <div class="freelance-topbar">
         <a class="freelance-back" href="./index.html" data-i18n="back">Back to homepage</a>
         <label class="freelance-lang-wrap">

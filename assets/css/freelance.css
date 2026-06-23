@@ -107,10 +107,30 @@ html[lang="hy"] .freelance-page {
 .freelance-hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(8, 12, 18, 0.55) 0%, rgba(8, 12, 18, 0.82) 70%, #0f1419 100%),
-    url("../img/nomad/hormoz-heaven-valley.jpg") center / cover no-repeat;
-  transform: scale(1.03);
+}
+
+.freelance-hero-bg picture,
+.freelance-hero-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.freelance-hero-bg img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.freelance-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 12, 18, 0.55) 0%,
+    rgba(8, 12, 18, 0.82) 70%,
+    #0f1419 100%
+  );
+  pointer-events: none;
 }
 
 .freelance-hero-inner {
