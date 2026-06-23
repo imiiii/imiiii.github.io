@@ -312,11 +312,18 @@ html[lang="hy"] .freelance-page {
   font-size: 0.95rem;
 }
 
+.freelance-featured-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
 .freelance-featured-project {
   display: grid;
   grid-template-columns: minmax(140px, 220px) 1fr;
   gap: 0;
-  margin-bottom: 28px;
+  margin-bottom: 0;
   text-decoration: none;
   border-radius: 16px;
   overflow: hidden;
