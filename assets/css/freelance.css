@@ -307,6 +307,82 @@ html[lang="hy"] .freelance-page {
   font-size: 0.95rem;
 }
 
+.freelance-featured-project {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 0;
+  margin-bottom: 28px;
+  text-decoration: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #11161d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.freelance-featured-project:hover {
+  transform: translateY(-3px);
+  border-color: rgba(125, 211, 252, 0.35);
+}
+
+.freelance-featured-project-visual {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 18px;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 55%),
+    linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+}
+
+.freelance-featured-project-visual span {
+  display: inline-block;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  color: #bae6fd;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.freelance-featured-project-body {
+  padding: 24px 26px;
+}
+
+.freelance-featured-project-eyebrow {
+  margin: 0 0 8px;
+  color: #7dd3fc;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.freelance-featured-project-body h3 {
+  margin: 0 0 10px;
+  color: #f8fafc;
+  font-size: 1.55rem;
+}
+
+.freelance-featured-project-body p {
+  margin: 0;
+  color: #b7c3cf;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.freelance-featured-project-cta {
+  display: inline-block;
+  margin-top: 16px;
+  color: #7dd3fc;
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
 .freelance-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -404,5 +480,15 @@ html[lang="hy"] .freelance-page {
 
   .freelance-section {
     padding: 24px 18px;
+  }
+
+  .freelance-featured-project {
+    grid-template-columns: 1fr;
+  }
+
+  .freelance-featured-project-visual {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 18px 16px;
   }
 }
