@@ -18,7 +18,18 @@
   <body class="freelance-page">
     <header class="freelance-hero">
       <div class="freelance-hero-bg" aria-hidden="true">
-        <picture>
+        <video
+          class="freelance-hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="./assets/img/freelance/hero-bg.jpg"
+        >
+          <source src="./assets/video/freelance/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <picture class="freelance-hero-poster">
           <source type="image/webp" srcset="./assets/img/freelance/hero-bg.webp" />
           <img
             src="./assets/img/freelance/hero-bg.jpg"
@@ -26,7 +37,6 @@
             width="1920"
             height="1280"
             decoding="async"
-            fetchpriority="high"
           />
         </picture>
         <div class="freelance-hero-overlay"></div>
