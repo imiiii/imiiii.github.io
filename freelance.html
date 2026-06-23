@@ -242,5 +242,24 @@
     <footer class="freelance-footer">
       <p>&copy; <span data-i18n="footer">Iman Barzegari</span>, 2026</p>
     </footer>
+    <script>
+      (function () {
+        var video = document.querySelector(".freelance-hero-video");
+        if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+        video.muted = true;
+
+        function playVideo() {
+          video.play().catch(function () {});
+        }
+
+        if (video.readyState >= 2) playVideo();
+        else video.addEventListener("canplay", playVideo, { once: true });
+
+        document.addEventListener("visibilitychange", function () {
+          if (!document.hidden) playVideo();
+        });
+      })();
+    </script>
   </body>
 </html>

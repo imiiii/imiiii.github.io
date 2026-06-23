@@ -114,19 +114,25 @@ html[lang="hy"] .freelance-page {
 .freelance-hero-video {
   position: absolute;
   inset: 0;
-  display: block;
   width: 100%;
   height: 100%;
 }
 
-.freelance-hero-video,
-.freelance-hero-bg img {
+.freelance-hero-video {
+  display: block;
+  z-index: 0;
   object-fit: cover;
   object-position: center center;
 }
 
-.freelance-hero-poster {
+.freelance-hero-bg .freelance-hero-poster {
   display: none;
+  z-index: 0;
+}
+
+.freelance-hero-bg .freelance-hero-poster img {
+  object-fit: cover;
+  object-position: center center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -134,16 +140,15 @@ html[lang="hy"] .freelance-page {
     display: none;
   }
 
-  .freelance-hero-poster {
+  .freelance-hero-bg .freelance-hero-poster {
     display: block;
-    width: 100%;
-    height: 100%;
   }
 }
 
 .freelance-hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     180deg,
     rgba(8, 12, 18, 0.55) 0%,
