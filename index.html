@@ -10,7 +10,9 @@
 <meta property="og:image" content="https://imiiii.github.io/assets/img/avatar-desert.jpg">
 <link rel="shortcut icon" href="./assets/img/personal.ico">
 <title>Iman Barzegari Freelance</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap">
 <style>
 img{max-width:100%}
 [hidden]{display:none!important}
@@ -24,7 +26,7 @@ img{max-width:100%}
   --font-display:"Outfit","Nunito",system-ui,sans-serif;
   --font-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-retro:"DM Mono",ui-monospace,Menlo,monospace;
-  --font-code:"JetBrains Mono","DM Mono",ui-monospace,monospace;
+  --font-code:"DM Mono",ui-monospace,Menlo,monospace;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -263,13 +265,54 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
   #rot::after,.caret{animation:none}
   .mq-row{animation:none;flex-wrap:wrap;width:auto}
 }
+
+/* UI/UX pass: accessibility, touch targets, navigation, calmer motion */
+html{scroll-padding-top:84px}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--lamp);color:var(--on-lamp);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+main:focus{outline:none}
+.nav{position:relative}
+.nav ul a{display:inline-flex;align-items:center;min-height:44px;padding-inline:4px}
+.menu-btn{display:none;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:700 14.5px var(--font-body);cursor:pointer}
+.menu-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.copy{min-height:44px;min-width:64px}
+.fbtn,.opt{min-height:44px}
+.seg button{min-height:40px}
+.links a{display:inline-flex;align-items:center;min-height:44px}
+.btn{min-height:48px}
+.mq-track{-webkit-mask-image:none;mask-image:none}
+.mq-row{flex-wrap:wrap;width:auto;animation:none}
+.owl{animation:none}
+.proof{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-top:18px;color:var(--muted);font-size:15px}
+.proof b{color:var(--ink);font-family:var(--font-display);font-weight:600;font-size:17px}
+.proof i{font-style:normal;color:var(--line)}
+.proof-sub{flex-basis:100%;font-size:13.5px}
+@media (max-width:900px){
+  .menu-btn{display:inline-flex;margin-left:auto}
+  .nav ul{display:none;position:absolute;z-index:30;top:calc(100% - 6px);right:0;left:0;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 20px 40px rgba(0,0,0,.45)}
+  .nav ul.open{display:flex}
+  .nav ul a{display:flex;min-height:48px;padding-inline:12px;border-radius:10px;font-size:16px;color:var(--ink)}
+  .nav ul a:hover,.nav ul a:focus-visible{background:var(--surface2)}
+  .nav{flex-wrap:nowrap;gap:8px}
+  .brand{font-size:18px;gap:8px;min-width:0}
+  .nav>.btn-primary{padding-inline:14px;min-height:44px;font-size:14.5px}
+  .menu-btn{padding:0 12px}
+  .mq-label{display:block!important}
+  .marquee{flex-wrap:wrap}
+}
+@media (max-width:360px){
+  .menu-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .menu-btn{width:44px;justify-content:center;padding:0}
+}
 </style>
 </head>
 <body data-mode="simple">
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="#top"><i aria-hidden="true"></i>imi.freelance<u class="caret" aria-hidden="true"></u></a>
-    <ul>
+    <a class="brand" href="#top"><i aria-hidden="true"></i>imi.freelance</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="menu-txt">Menu</span></button>
+    <ul id="nav-links">
       <li><a href="#help">How I help</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -278,11 +321,13 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
     </ul>
     <a class="btn btn-primary" href="#contact">Hire me</a>
   </nav>
-
+</div>
+<main id="main" tabindex="-1">
+<div class="wrap">
   <header class="hero" id="top">
     <div>
       <p class="hello"><b>now travelling</b> Open to clients worldwide</p>
-      <h1>I build the <mark><span id="rot">websites</span></mark> your business needs.</h1>
+      <h1>I build <mark>websites, apps and AI tools</mark> for your business.</h1>
       <p class="lead s">You tell me the problem in plain words. I handle everything technical: design, building, launch and fixes. Calm, clear and on time, from wherever I am in the world.</p>
       <p class="lead t">Full-stack engineer and ML engineer (M.S. Computer Engineering). I take projects from architecture to production in .NET, TypeScript, Python and Angular, plus ML pipelines, APIs and Chrome extensions. Remote worldwide.</p>
       <div class="cta-row">
@@ -310,7 +355,7 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
       <div class="sill" aria-hidden="true"></div>
       <figure class="polaroid" style="margin:0">
         <span class="tape" aria-hidden="true"></span>
-        <img src="./assets/img/avatar-desert.jpg" width="640" height="640" alt="Cartoon avatar of Iman Barzegari in a bucket hat, grey hoodie and orange and navy jacket, with a beard and curly hair, in front of desert mesas at dusk">
+        <img src="./assets/img/avatar-desert.jpg" width="640" height="640" decoding="async" fetchpriority="high" alt="Cartoon avatar of Iman Barzegari in a bucket hat, grey hoodie and orange and navy jacket, with a beard and curly hair, in front of desert mesas at dusk">
         <p>imi · coding somewhere</p>
       </figure>
       <div class="laptop" role="img" aria-label="A small code editor showing Iman's stack, and a terminal running build and deploy commands">
@@ -327,11 +372,12 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
     <div class="fact"><strong data-n="11" data-suf=" yrs">11 yrs</strong><span>building software since 2015</span></div>
     <div class="fact"><strong data-n="94" data-suf="">94</strong><span>TOEFL score, so clear English communication</span></div>
   </div>
+  <p class="proof"><span>My software runs at</span> <b>Saipa</b><i aria-hidden="true">·</i><b>Saman Insurance</b><i aria-hidden="true">·</i><b>Saipa Yadak</b><span class="proof-sub">plus research at IPM, Institute for Research in Fundamental Sciences</span></p>
   <div class="band" aria-hidden="true"></div>
-  <div class="marquee" aria-label="Technologies I work with">
-    <p class="mq-label">$ stack --list</p>
-    <div class="mq-track"><div class="mq-row">
-      <span>C#</span><span>.NET</span><span>Blazor</span><span>TypeScript</span><span>Angular</span><span>React</span><span>Next.js</span><span>Python</span><span>FastAPI</span><span>Node.js</span><span>PostgreSQL</span><span>MySQL</span><span>SQL Server</span><span>Docker</span><span>Linux</span><span>Git</span><span>PyTorch</span><span>TensorFlow</span><span>ML.NET</span><span>ONNX</span><span>MLIR</span><span>LLVM</span>
+  <div class="marquee">
+    <p class="mq-label" id="stack-label">$ stack --list</p>
+    <div class="mq-track"><div class="mq-row" role="list" aria-labelledby="stack-label">
+      <span role="listitem">C#</span><span role="listitem">.NET</span><span role="listitem">Blazor</span><span role="listitem">TypeScript</span><span role="listitem">Angular</span><span role="listitem">React</span><span role="listitem">Next.js</span><span role="listitem">Python</span><span role="listitem">FastAPI</span><span role="listitem">Node.js</span><span role="listitem">PostgreSQL</span><span role="listitem">MySQL</span><span role="listitem">SQL Server</span><span role="listitem">Docker</span><span role="listitem">Linux</span><span role="listitem">Git</span><span role="listitem">PyTorch</span><span role="listitem">TensorFlow</span><span role="listitem">ML.NET</span><span role="listitem">ONNX</span><span role="listitem">MLIR</span><span role="listitem">LLVM</span>
     </div></div>
   </div>
 </div>
@@ -666,6 +712,9 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
       </div>
     </div>
   </section>
+</div>
+</main>
+<div class="wrap">
   <footer><p>© 2026 Iman Barzegari · <img class="mini-owl" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 20'><polygon points='2,1 7,6 4,7' fill='%23B5523B'/><polygon points='22,1 17,6 20,7' fill='%23B5523B'/><path d='M12 3 C19 3 22 8 22 12 C22 17 18 19 12 19 C6 19 2 17 2 12 C2 8 5 3 12 3Z' fill='%237A3B2E'/><circle cx='8' cy='10' r='3.6' fill='%23F2C14E'/><circle cx='16' cy='10' r='3.6' fill='%23F2C14E'/><circle cx='8' cy='10' r='1.6' fill='%231E1419'/><circle cx='16' cy='10' r='1.6' fill='%231E1419'/><polygon points='11,12 13,12 12,15' fill='%23E8834E'/></svg>">made by a night owl, under wide desert skies</p><p style="margin-top:8px"><a href="./freelance.html" style="color:var(--muted)">Freelance</a> · <a href="./nomad.html" style="color:var(--muted)">Nomad journal</a> · <a href="./family.html" style="color:var(--muted)">Family</a> · <a href="./resume.html" style="color:var(--muted)">Classic resume</a></p></footer>
 </div>
 
@@ -680,25 +729,17 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
   bt.addEventListener('click',function(){setMode('tech')});
   try{if(localStorage.getItem('iman-mode')==='tech')setMode('tech')}catch(e){}
 
-  // rotating headline word, with stable height
-  var rot=document.getElementById('rot'),h1=document.querySelector('.hero h1');
-  var words=['websites','apps','AI tools','dashboards','servers'];
-  function lockH(){var o=rot.textContent,m=0;h1.style.minHeight='';words.forEach(function(w){rot.textContent=w;m=Math.max(m,h1.offsetHeight)});rot.textContent=o;h1.style.minHeight=m+'px'}
-  lockH();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(lockH);addEventListener('resize',lockH);
-  if(!reduce){var wi=0;(function cycle(){setTimeout(function(){(function del(){if(rot.textContent.length){rot.textContent=rot.textContent.slice(0,-1);setTimeout(del,45)}else{wi=(wi+1)%words.length;var nw=words[wi],i=0;(function typ(){rot.textContent=nw.slice(0,++i);if(i<nw.length)setTimeout(typ,85);else cycle()})()}})()},2300)})()}
+  // mobile menu
+  var mb=document.querySelector('.menu-btn'),ml=document.getElementById('nav-links');
+  function setMenu(o){ml.classList.toggle('open',o);mb.setAttribute('aria-expanded',o)}
+  mb.addEventListener('click',function(){setMenu(mb.getAttribute('aria-expanded')!=='true')});
+  ml.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mb.getAttribute('aria-expanded')==='true'){setMenu(false);mb.focus()}});
+  document.addEventListener('click',function(e){if(!e.target.closest('.nav'))setMenu(false)});
   // terminal commands in the little editor
   var cmd=document.getElementById('cmd'),ok=document.getElementById('cmd-ok');
   var cmds=[['deploy --prod','✓ live'],['git push','✓ shipped'],['npm run build','✓ done'],['pytest','✓ all passing'],['docker compose up','✓ running']];
   if(!reduce){var ci=0;(function nextCmd(){setTimeout(function(){ci=(ci+1)%cmds.length;var c=cmds[ci],i=0;ok.style.opacity=0;cmd.textContent='';(function t(){cmd.textContent=c[0].slice(0,++i);if(i<c[0].length)setTimeout(t,70);else setTimeout(function(){ok.textContent=c[1];ok.style.opacity=1;nextCmd()},400)})()},2600)})()}
-  // seamless marquee
-  var row=document.querySelector('.mq-row');if(row&&!reduce){row.innerHTML+=row.innerHTML.replace(/<span>/g,'<span aria-hidden="true">')}
-
-  // count-up
-  if('IntersectionObserver' in window&&!reduce){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var el=e.target,n=+el.getAttribute('data-n'),suf=el.getAttribute('data-suf')||'',t0=performance.now();(function tick(t){var p=Math.min(1,(t-t0)/1100);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(tick)})(t0)})},{threshold:.6});
-    document.querySelectorAll('.fact strong[data-n]').forEach(function(s){io.observe(s)});
-  }
-
   // project filter
   var fb=document.querySelectorAll('.fbtn');
   fb.forEach(function(b){b.addEventListener('click',function(){var f=b.getAttribute('data-f');fb.forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.proj[data-cat]').forEach(function(p){p.hidden=!(f==='all'||p.getAttribute('data-cat')===f)})})});
@@ -756,6 +797,6 @@ footer .mini-owl{display:inline-block;width:18px;height:18px;vertical-align:-3px
 
 })();
 </script>
-<script src="./assets/js/google-analytics.js"></script>
+<script src="./assets/js/google-analytics.js" defer></script>
 </body>
 </html>
