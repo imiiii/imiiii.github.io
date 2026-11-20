@@ -750,7 +750,7 @@ iman.<span class="f">build</span>(yourIdea); <span class="c">// ✓</span></pre>
   document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){copyText(b.getAttribute('data-copy'),b,b.parentNode.querySelector('.v'),'Copy')})});
 
   // full-bleed desert dusk with gentle pointer parallax
-  var cv=document.getElementById('sky'),ctx=cv.getContext('2d'),W=0,H=0,layers=[],stars=[],clouds=[],cact=[],vis=true,raf=0,px=0,tx=0;
+  var cv=document.getElementById('sky'),ctx=cv.getContext('2d'),W=0,H=0,layers=[],stars=[],clouds=[],cact=[],vis=true,raf=0,px=0,tx=0,meteors=[],nextM=1200,lastT=0;
   function setup(){var r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);
     var seed=11;function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
     function mesa(base,amp,col,depth){var p=[[-60,H],[-60,base]],x=-60;while(x<W+60){var fw=W*(.06+rnd()*.12),top=base-H*(.03+rnd()*amp),sl=W*(.012+rnd()*.025);p.push([x+sl,top],[x+sl+fw,top],[x+2*sl+fw,base+H*(rnd()-.5)*.02]);x+=2*sl+fw+W*(.02+rnd()*.06)}p.push([W+60,base],[W+60,H]);return{p:p,c:col,d:depth}}
@@ -762,6 +762,16 @@ iman.<span class="f">build</span>(yourIdea); <span class="c">// ✓</span></pre>
   function frame(t){px+=(tx-px)*.05;
     var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#140F2E');g.addColorStop(.42,'#4F2A56');g.addColorStop(.64,'#C4553F');g.addColorStop(.8,'#F09A45');g.addColorStop(1,'#F7C46C');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
     stars.forEach(function(s){ctx.fillStyle='rgba(255,246,230,'+(.3+.35*Math.sin(t/1000+s[3]))+')';ctx.beginPath();ctx.arc(s[0],s[1],s[2]*.8,0,7);ctx.fill()});
+    // meteors: random shooting stars with glowing heads and fading golden tails
+    if(!reduce){var dtm=lastT?Math.min(50,t-lastT):16;lastT=t;
+      if(t>nextM){nextM=t+900+Math.random()*2600;var ang=Math.PI*(.72+Math.random()*.1),sp=(.55+Math.random()*.5)*Math.max(W,900)/900,big=Math.random()<.25;
+        meteors.push({x:W*(.2+Math.random()*.85),y:-20+Math.random()*H*.22,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,len:(big?150:80)+Math.random()*110,life:0,max:900+Math.random()*700,big:big})}
+      meteors=meteors.filter(function(m){m.life+=dtm;m.x+=m.vx*dtm;m.y+=m.vy*dtm;if(m.life>m.max||m.y>H*.72||m.x<-200)return false;
+        var a=Math.min(1,m.life/150)*Math.min(1,(m.max-m.life)/250),n=Math.hypot(m.vx,m.vy),ex=m.x-m.vx/n*m.len,ey=m.y-m.vy/n*m.len;
+        var gr=ctx.createLinearGradient(m.x,m.y,ex,ey);gr.addColorStop(0,'rgba(255,244,220,'+a+')');gr.addColorStop(.3,'rgba(242,193,78,'+(a*.6)+')');gr.addColorStop(1,'rgba(232,131,78,0)');
+        ctx.strokeStyle=gr;ctx.lineWidth=m.big?2.8:1.6;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.lineTo(ex,ey);ctx.stroke();
+        ctx.save();ctx.shadowColor='rgba(255,214,140,'+a+')';ctx.shadowBlur=m.big?16:9;ctx.fillStyle='rgba(255,250,236,'+a+')';ctx.beginPath();ctx.arc(m.x,m.y,m.big?2.6:1.7,0,7);ctx.fill();ctx.restore();
+        return true})}
     var R=Math.min(W,H)*.22,sx=W*.68-px*10,sy=H*.68;
     var sg=ctx.createRadialGradient(sx,sy,R*.2,sx,sy,R*2.6);sg.addColorStop(0,'rgba(255,214,120,.42)');sg.addColorStop(1,'rgba(255,214,120,0)');ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);
     ctx.fillStyle='#F9C25E';ctx.beginPath();ctx.arc(sx,sy,R,0,7);ctx.fill();
