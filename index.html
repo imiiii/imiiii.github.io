@@ -764,13 +764,13 @@ iman.<span class="f">build</span>(yourIdea); <span class="c">// ✓</span></pre>
     stars.forEach(function(s){ctx.fillStyle='rgba(255,246,230,'+(.3+.35*Math.sin(t/1000+s[3]))+')';ctx.beginPath();ctx.arc(s[0],s[1],s[2]*.8,0,7);ctx.fill()});
     // meteors: random shooting stars with glowing heads and fading golden tails
     if(!reduce){var dtm=lastT?Math.min(50,t-lastT):16;lastT=t;
-      if(t>nextM){nextM=t+900+Math.random()*2600;var ang=Math.PI*(.72+Math.random()*.1),sp=(.55+Math.random()*.5)*Math.max(W,900)/900,big=Math.random()<.25;
-        meteors.push({x:W*(.2+Math.random()*.85),y:-20+Math.random()*H*.22,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,len:(big?150:80)+Math.random()*110,life:0,max:900+Math.random()*700,big:big})}
+      if(t>nextM){nextM=t+350+Math.random()*1100;var ang=Math.PI*(.72+Math.random()*.1),sp=(.3+Math.random()*.25)*Math.max(W,900)/900,big=Math.random()<.4;
+        meteors.push({x:W*(.5+Math.random()*.6),y:-20+Math.random()*H*.22,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,len:(big?260:150)+Math.random()*160,life:0,max:1100+Math.random()*800,big:big})}
       meteors=meteors.filter(function(m){m.life+=dtm;m.x+=m.vx*dtm;m.y+=m.vy*dtm;if(m.life>m.max||m.y>H*.72||m.x<-200)return false;
         var a=Math.min(1,m.life/150)*Math.min(1,(m.max-m.life)/250),n=Math.hypot(m.vx,m.vy),ex=m.x-m.vx/n*m.len,ey=m.y-m.vy/n*m.len;
         var gr=ctx.createLinearGradient(m.x,m.y,ex,ey);gr.addColorStop(0,'rgba(255,244,220,'+a+')');gr.addColorStop(.3,'rgba(242,193,78,'+(a*.6)+')');gr.addColorStop(1,'rgba(232,131,78,0)');
-        ctx.strokeStyle=gr;ctx.lineWidth=m.big?2.8:1.6;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.lineTo(ex,ey);ctx.stroke();
-        ctx.save();ctx.shadowColor='rgba(255,214,140,'+a+')';ctx.shadowBlur=m.big?16:9;ctx.fillStyle='rgba(255,250,236,'+a+')';ctx.beginPath();ctx.arc(m.x,m.y,m.big?2.6:1.7,0,7);ctx.fill();ctx.restore();
+        ctx.strokeStyle=gr;ctx.lineWidth=m.big?4.6:3;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.lineTo(ex,ey);ctx.stroke();
+        ctx.save();ctx.shadowColor='rgba(255,214,140,'+a+')';ctx.shadowBlur=m.big?26:16;ctx.fillStyle='rgba(255,250,236,'+a+')';ctx.beginPath();ctx.arc(m.x,m.y,m.big?4.2:2.8,0,7);ctx.fill();ctx.restore();
         return true})}
     var R=Math.min(W,H)*.22,sx=W*.68-px*10,sy=H*.68;
     var sg=ctx.createRadialGradient(sx,sy,R*.2,sx,sy,R*2.6);sg.addColorStop(0,'rgba(255,214,120,.42)');sg.addColorStop(1,'rgba(255,214,120,0)');ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);
